@@ -9,11 +9,8 @@ def attack(char_name: str, char_class: str) -> str:
         return (f'{char_name} нанёс урон противнику'
                 f' равный {5 + randint(5, 10)}')
     if char_class == 'healer':
-        return (f'{char_name} нанёс урон противнику'
-                f' равный {5 + randint(-3, -1)}')
-
-
-def defence(char_name: str, char_class: str) -> str:
+        return (f'{char_name} нанёс урон противнику равный {5 + randint(-3, -1)}')
+def defence(char_name, char_class):
     if char_class == 'warrior':
         return (f'{char_name} блокировал'
                 f' {10 + randint(5, 10)} урона')
@@ -21,23 +18,20 @@ def defence(char_name: str, char_class: str) -> str:
         return (f'{char_name} блокировал'
                 f' {10 + randint(-2, 2)} урона')
     if char_class == 'healer':
-        return (f'{char_name} блокировал'
-                f' {10 + randint(2, 5)} урона')
-
-
-def special(char_name: str, char_class: str) -> str:
-    if char_class == 'warrior':
-        return (f'{char_name} применил специальное'
-                f' умение «Выносливость {80 + 25}»')
+        return (f'{char_name} блокировал {10 + randint(2, 5)} урона')
+def special(char_name, char_class):
+    if char_class == 'warrior': 
+        return (f'{char_name} применил специальное умение «Выносливость {80 + 25}»')
     if char_class == 'mage':
         return (f'{char_name} применил специальное'
                 f' умение «Атака {5 + 40}»')
     if char_class == 'healer':
-        return (f'{char_name} применил специальное'
-                f' умение «Защита {10 + 30}»')
+        return (f'{char_name} применил специальное умение «Защита {10 + 30}»')
 
 
-def start_training(char_name: str, char_class: str) -> str:
+
+
+def start_training(char_name, char_class):
     if char_class == 'warrior':
         print(f'{char_name}, '
               f'ты Воитель — отличный боец ближнего боя.')
@@ -64,10 +58,9 @@ def start_training(char_name: str, char_class: str) -> str:
             print(special(char_name, char_class))
     return 'Тренировка окончена.'
 
-
-def choice_char_class() -> str:
-    approve_choice: str = ''
-    char_class: str = ''
+def choice_char_class():
+    approve_choice = None
+    char_class = None
     while approve_choice != 'y':
         char_class = input('Введи название персонажа,'
                            ' за которого хочешь играть:'
@@ -97,3 +90,6 @@ def main():
     print('Воитель, Маг, Лекарь')
     char_class: str = choice_char_class()
     print(start_training(char_name, char_class))
+    
+
+main()
