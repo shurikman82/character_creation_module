@@ -59,6 +59,28 @@ class Healer(Character):
     SPECIAL_SKILL = 'Защита'
 
 
+def start_training(character):
+    """
+    Принимает на вход имя и класс персонажа.
+    Возвращает сообщения о результатах цикла тренировки персонажа.
+    """
+
+    print('Потренируйся управлять своими навыками.')
+    print('Введи одну из команд: attack — чтобы атаковать противника, '
+          'defence — чтобы блокировать атаку противника или '
+          'special — чтобы использовать свою суперсилу.')
+    print('Если не хочешь тренироваться, введи команду skip.')
+    commands = {'attack': character.attack,
+                'defence': character.defence,
+                'special': character.special}
+    cmd = None
+    while cmd != 'skip':
+        cmd = input('Введи команду: ')
+        if cmd in commands:
+            print(commands[cmd]())
+    return 'Тренировка окончена.'
+
+
 def choice_char_class(char_name: str) -> Character:
     """
     Возвращает строку с выбранным
